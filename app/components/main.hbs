@@ -17,8 +17,14 @@
         <Customer::Supplier 
             @changeTab={{action changeTab}} 
             @store={{@store}}
-           
+            />
+    {{/if}}
 
+    {{#if (eq this.currentTab "buyer") }}
+        {{!-- <Invoice::Invoice /> --}}
+        <Customer::Buyer 
+            @changeTab={{action changeTab}} 
+            @store={{@store}}
             />
     {{/if}}
 

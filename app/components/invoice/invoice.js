@@ -1,26 +1,32 @@
 import Component from '@glimmer/component';
-import { computed, set, action } from '@ember/object';
+import { computed, set, action, get } from '@ember/object';
 import $ from 'jquery';
 export default class InvoiceInvoiceComponent extends Component {
 
     constructor() {
         super(...arguments);
         $(document).ready(function() {
-          $('.js-example-basic-single').select2();
+          $('#supplierSelect').select2();
+          $('#buyerSelect').select2();
          });
-         console.log(this.args.customer);
-        set(this, 'supplier', this.args.customer.filterBy("type", "supplier"));
 
-        set(this, 'list', [
-            { value: 0, label: 'Alfa Romeo' },
-            { value: 1, label: 'Audi' },
-            { value: 2, label: 'Citroën' },
-            { value: 3, label: 'Fiat' },
-            { value: 4, label: 'Opel' },
-            { value: 5, label: 'Peugeot' },
-            { value: 6, label: 'Seat' },
-            { value: 7, label: 'Skoda' }
-          ]);
+        set(this, 'supplier', this.args.customer.filterBy("type", "supplier"));
+        let selectedSupplier = get(this, 'supplier').filterBy("selected", true);
+        if(selectedSupplier.get("length")){
+          set(this, 'selectedSupplier', selectedSupplier[0]);
+        }else {
+          set(this, 'selectedSupplier', get(this, 'supplier')[0]);
+        }
+
+
+        set(this, 'buyer', this.args.customer.filterBy("type", "buyer"));
+        let selectedBuyer = get(this, 'buyer').filterBy("selected", true);
+        if(selectedBuyer.get("length")){
+          set(this, 'selectedBuyer', selectedBuyer[0]);
+        }else {
+          set(this, 'selectedBuyer', get(this, 'buyer')[0]);
+        }
+ 
     }
 
 
@@ -33,8 +39,16 @@ export default class InvoiceInvoiceComponent extends Component {
     submit() {
       set(this, "firstName", "yes")
     }
+
     @action
-    selectSupplier() {
-      // set(this, "currentSupplier", )
+    selectSupplier(id) {
+      set(this, "selectedSupplier",  get(this, 'supplier').filterBy("id", id)[0]);
+      
+    }
+
+    @action
+    selectBuyer(id) {
+      set(this, "selectedBuyer",  get(this, 'buyer').filterBy("id", id)[0]);
+      
     }
 }

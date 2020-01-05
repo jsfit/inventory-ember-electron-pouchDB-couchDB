@@ -5,7 +5,7 @@ import { computed, set, action } from '@ember/object';
 export default class MainComponent extends Component {
     constructor() {
         super(...arguments);
-        set(this, 'currentTab', "supplier");
+        set(this, 'currentTab', "invoice");
     }
 
    

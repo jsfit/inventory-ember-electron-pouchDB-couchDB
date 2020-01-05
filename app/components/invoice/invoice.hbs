@@ -1,88 +1,110 @@
 {{yield}}
-<form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <div class="input-group mb-3">
-        <label for="inputGroupSelect01">Choose Supplier</label>
-        <select class="js-example-basic-single form-control" id="inputGroupSelect01" name="state" onchange={{action "selectSupplier"}}>
-          {{#each this.supplier as |s|}}
-            <option selected={{s.selected}}>{{s.name}}</option>
-          {{/each}}
-        </select>
-        <button {{action @changeTab "supplier"}} type="button" style="height: 29px;width: 30px;padding: 0; margin: 0" class="btn btn-primary" data-toggle="modal" data-target="#uuuu" >+</button>
-       
-      </div>
-      <table>
-        <tbody>
-          <tr>
-            <td colspan="3" class="align-middle">Name:{{firstName}}</td>
-          </tr>
-          <tr>
-            <td colspan="3" class="align-middle">Cnic:</td>
-          </tr>
-          <tr>
-            <td colspan="3" class="align-middle">Address:</td>
-          </tr>
-          <tr>
-            <td colspan="3" class="align-middle">Phone:</td>
-          </tr>
-          <tr>
-            <td colspan="3" class="align-middle">STRN:</td>
-          </tr>
-          <tr>
-            <td colspan="3" class="align-middle">NTN:</td>
-          </tr>
-          <tr>
-            <td colspan="3" class="align-middle">Invoice:</td>
-          </tr>
-        </tbody>
-
-
-
-
-      </table>
-
-
-    </div>
-    <div class="form-group col-md-6">
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-    </div>
-  </div>
-  {{!-- <div class="form-group">
-    <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="form-group">
-    <label for="inputAddress2">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">State</label>
-      <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
+<div class="row">
+  <div class="form-group col-md-6">
+    <div class="input-group mb-3">
+      <label for="inputGroupSelect01">Choose Supplier</label>
+      <select class="js-example-basic-single form-control" onchange={{action "selectSupplier" value="target.value" }}
+        id="supplierSelect" name="supplier">
+        {{#each this.supplier as |s|}}
+        <option value={{s.id}} selected={{s.selected}}>{{s.name}}</option>
+        {{/each}}
       </select>
+      <button {{action @changeTab "supplier"}} type="button" style="height: 29px;width: 30px;padding: 0; margin: 0"
+        class="btn btn-primary" data-toggle="modal" data-target="#uuuu">+</button>
     </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td colspan="5" class="align-middle">Name:</td>
+          <td class="align-middle">{{selectedSupplier.name}}</td>
+        </tr>
+        <tr>
+          <td colspan="5" class="align-middle">Cnic:</td>
+          <td class="align-middle">{{selectedSupplier.cnic}}</td>
+
+        </tr>
+        <tr>
+          <td colspan="5" class="align-middle">Address:</td>
+          <td class="align-middle">{{selectedSupplier.address}}</td>
+
+        </tr>
+        <tr>
+          <td colspan="5" class="align-middle">Phone:</td>
+          <td class="align-middle">{{selectedSupplier.phone}}</td>
+
+        </tr>
+        <tr>
+          <td colspan="5" class="align-middle">STRN:</td>
+          <td class="align-middle">{{selectedSupplier.strn}}</td>
+        </tr>
+        <tr>
+          <td colspan="5" class="align-middle">NTN:</td>
+          <td class="align-middle">{{selectedSupplier.ntn}}</td>
+
+        </tr>
+        <tr>
+          <td colspan="5" class="align-middle">Invoice:</td>
+          <td class="align-middle">{{selectedSupplier.invoice}}</td>
+
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
+  <div class="form-group col-md-6">
+    <div class="input-group mb-3">
+      <label for="inputGroupSelect01">Choose Buyer</label>
+      <select class="js-example-basic-single form-control" onchange={{action "selectBuyer" value="target.value" }}
+        id="buyerSelect" name="buyer">
+        {{#each this.buyer as |b|}}
+        <option value={{b.id}} selected={{b.selected}}>{{b.name}}</option>
+        {{/each}}
+      </select>
+      <button {{action @changeTab "buyer"}} type="button" style="height: 29px;width: 30px;padding: 0; margin: 0"
+        class="btn btn-primary" data-toggle="modal" data-target="#uuuu">+</button>
+
     </div>
-  </div> --}}
-  {{!-- <button type="submit" class="btn btn-primary">Sign in</button> --}}
-</form>
+    <table>
+      <tbody>
+        <tr>
+          <td class="align-middle">Name:</td>
+          <td class="align-middle">{{selectedBuyer.name}}</td>
+        </tr>
+        <tr>
+          <td class="align-middle">Cnic:</td>
+          <td class="align-middle">{{selectedBuyer.cnic}}</td>
+
+        </tr>
+        <tr>
+          <td class="align-middle">Address:</td>
+          <td class="align-middle">{{selectedBuyer.address}}</td>
+
+        </tr>
+        <tr>
+          <td class="align-middle">Phone:</td>
+          <td class="align-middle">{{selectedBuyer.phone}}</td>
+
+        </tr>
+        <tr>
+          <td class="align-middle">STRN:</td>
+          <td class="align-middle">{{selectedBuyer.strn}}</td>
+
+        </tr>
+        <tr>
+          <td class="align-middle">NTN:</td>
+          <td class="align-middle">{{selectedBuyer.ntn}}</td>
+
+        </tr>
+       
+      </tbody>
+
+
+
+
+    </table>
+  </div>
+
+</div>
+
 {{!-- <div class="modal fade" id="uuuu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
