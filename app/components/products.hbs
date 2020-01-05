@@ -1,0 +1,37 @@
+{{yield}}
+<form {{action (perform this.createProduct) on='submit'}}>
+
+    <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Company</label>
+        <div class="col-sm-10">
+            {{input value=this.product.company type="text"  class="form-control" placeholder="Company Name" required="true"}}
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Model</label>
+        <div class="col-sm-10">
+            {{input value=this.product.model type="text"  class="form-control" placeholder="Model" required="true"}}
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-10">
+            {{input value=this.product.retail_price type="text"  class="form-control" placeholder="Price" required="true" }}
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Stock</label>
+        <div class="col-sm-10">
+            {{input value=this.product.stock type="text"  class="form-control" placeholder="Stock" required="true"}}
+
+        </div>
+    </div>
+ 
+    <button type="submit" class="btn btn-primary float-right" data-toggle="modal">
+        Create Item
+    </button>
+
+</form>

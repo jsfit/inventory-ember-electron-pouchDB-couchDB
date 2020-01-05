@@ -16,9 +16,10 @@
       <li class="nav-item {{if (eq @currentTab 'buyer') 'active'}}" {{action @changeTab "buyer"}}>
         <a class="nav-link" href="#" >Buyer  <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+      <li class="nav-item {{if (eq @currentTab 'products') 'active'}}" {{action @changeTab "products"}}>
+        <a class="nav-link" href="#" >Products  <span class="sr-only">(current)</span></a>
       </li>
+     
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
