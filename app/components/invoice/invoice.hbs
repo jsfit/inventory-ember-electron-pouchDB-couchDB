@@ -1,52 +1,54 @@
 {{yield}}
 <form>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <div class="input-group mb-3">
-                <label for="inputGroupSelect01">Choose Supplier</label>
-                <select class="js-example-basic-single form-control"  id="inputGroupSelect01" name="state">
-                    {{#each list as |d|}}
-                        <option selected>{{d.label}}</option>
-                    {{/each}}
-                </select>
-            </div>
-            <table>
-                <tbody>
-                    <tr>
-                        <td colspan="3" class="align-middle">Name:{{firstName}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" class="align-middle">Cnic:</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" class="align-middle">Address:</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" class="align-middle">Phone:</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" class="align-middle">STRN:</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" class="align-middle">NTN:</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" class="align-middle">Invoice:</td>
-                    </tr>
-                </tbody>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <div class="input-group mb-3">
+        <label for="inputGroupSelect01">Choose Supplier</label>
+        <select class="js-example-basic-single form-control" id="inputGroupSelect01" name="state" onchange={{action "selectSupplier"}}>
+          {{#each this.supplier as |s|}}
+            <option selected={{s.selected}}>{{s.name}}</option>
+          {{/each}}
+        </select>
+        <button {{action @changeTab "supplier"}} type="button" style="height: 29px;width: 30px;padding: 0; margin: 0" class="btn btn-primary" data-toggle="modal" data-target="#uuuu" >+</button>
+       
+      </div>
+      <table>
+        <tbody>
+          <tr>
+            <td colspan="3" class="align-middle">Name:{{firstName}}</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="align-middle">Cnic:</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="align-middle">Address:</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="align-middle">Phone:</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="align-middle">STRN:</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="align-middle">NTN:</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="align-middle">Invoice:</td>
+          </tr>
+        </tbody>
 
 
 
 
-            </table>
+      </table>
 
 
-        </div>
-        <div class="form-group col-md-6">
-            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-        </div>
     </div>
-    {{!-- <div class="form-group">
+    <div class="form-group col-md-6">
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+    </div>
+  </div>
+  {{!-- <div class="form-group">
     <label for="inputAddress">Address</label>
     <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
   </div>
@@ -79,5 +81,33 @@
       </label>
     </div>
   </div> --}}
-    {{!-- <button type="submit" class="btn btn-primary">Sign in</button> --}}
+  {{!-- <button type="submit" class="btn btn-primary">Sign in</button> --}}
 </form>
+{{!-- <div class="modal fade" id="uuuu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div> --}}

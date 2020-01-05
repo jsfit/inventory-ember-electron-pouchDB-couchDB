@@ -1,0 +1,25 @@
+
+{{!-- {{ui/header changeTab=this.changeTab}} --}}
+<Ui::Header @changeTab={{action changeTab}}  @currentTab={{this.currentTab}}/>
+
+<div class="container">
+    {{#if (eq currentTab "invoice") }}
+        <Invoice::Invoice 
+            @changeTab={{action changeTab}}  
+            @store={{@store}}
+             @customer={{@customer}}
+        
+         />
+    {{/if}}
+
+    {{#if (eq this.currentTab "supplier") }}
+        {{!-- <Invoice::Invoice /> --}}
+        <Customer::Supplier 
+            @changeTab={{action changeTab}} 
+            @store={{@store}}
+           
+
+            />
+    {{/if}}
+
+</div>
