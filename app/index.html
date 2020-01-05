@@ -11,6 +11,7 @@
 
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/inventory.css">
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/select2.min.css">
 
     {{content-for "head-footer"}}
   </head>
@@ -21,5 +22,10 @@
     <script src="{{rootURL}}assets/inventory.js"></script>
 
     {{content-for "body-footer"}}
+    <script>
+        $(document).ready(function() {
+                $('.js-example-basic-single').select2();
+          });
+    </script>
   </body>
 </html>
