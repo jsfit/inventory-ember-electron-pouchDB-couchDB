@@ -73,7 +73,7 @@ export default class InvoiceInvoiceComponent extends Component {
           
           invoice.save();
           this.notifications.success('Invoice Created Successfully', 'Invoice Genrated');
-
+          this.invoice_details = [];
         }else {
           this.notifications.error('No product selected', 'Error');
           

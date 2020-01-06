@@ -13,24 +13,21 @@
     {{/if}}
 
     {{#if (eq this.currentTab "supplier") }}
-        {{!-- <Invoice::Invoice /> --}}
         <Customer::Supplier 
             @changeTab={{action changeTab}} 
-            />
+        />
     {{/if}}
 
     {{#if (eq this.currentTab "buyer") }}
-        {{!-- <Invoice::Invoice /> --}}
         <Customer::Buyer 
             @changeTab={{action changeTab}} 
-            />
+        />
     {{/if}}
 
     {{#if (eq this.currentTab "products") }}
-        {{!-- <Invoice::Invoice /> --}}
         <Products 
             @changeTab={{action changeTab}} 
-            />
+        />
     {{/if}}
 
 </div>
