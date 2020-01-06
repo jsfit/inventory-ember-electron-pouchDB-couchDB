@@ -29,9 +29,36 @@
 
         </div>
     </div>
- 
+
     <button type="submit" class="btn btn-primary float-right" data-toggle="modal">
         Create Item
     </button>
 
 </form>
+
+
+<table id="table_id" class="display">
+    <thead>
+        <tr>
+            <th>Company</th>
+            <th>Model</th>
+            <th>Retail Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each @products as |product index|}}
+        <tr>
+            <td>{{product.company}}</td>
+            <td>{{product.model}}</td>
+            <td>{{product.retail_price}}</td>
+            <td>{{product.stock}}</td>
+            <td>
+                <button {{action "deleteProduct" product}} type="button" class="btn btn-primary">Edit</button>
+                <button {{action "deleteProduct" product}} type="button" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

@@ -27,6 +27,8 @@
     {{#if (eq this.currentTab "products") }}
         <Products 
             @changeTab={{action changeTab}} 
+            @products={{@products}}
+
         />
     {{/if}}
 

@@ -11,6 +11,7 @@ module.exports = function(defaults) {
   });
 
   app.import('vendor/js/select2.min.js');
+  app.import('vendor/js/jquery.dataTables.min.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
