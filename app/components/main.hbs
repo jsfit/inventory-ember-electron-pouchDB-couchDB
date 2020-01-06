@@ -6,11 +6,9 @@
     {{#if (eq currentTab "invoice") }}
         <Invoice::Invoice 
             @changeTab={{action changeTab}}  
-            @store={{@store}}
             @buyer={{@buyer}}
             @supplier={{@supplier}}
             @products={{@products}}
-        
          />
     {{/if}}
 
@@ -18,7 +16,6 @@
         {{!-- <Invoice::Invoice /> --}}
         <Customer::Supplier 
             @changeTab={{action changeTab}} 
-            @store={{@store}}
             />
     {{/if}}
 
@@ -26,7 +23,6 @@
         {{!-- <Invoice::Invoice /> --}}
         <Customer::Buyer 
             @changeTab={{action changeTab}} 
-            @store={{@store}}
             />
     {{/if}}
 
@@ -34,7 +30,6 @@
         {{!-- <Invoice::Invoice /> --}}
         <Products 
             @changeTab={{action changeTab}} 
-            @store={{@store}}
             />
     {{/if}}
 

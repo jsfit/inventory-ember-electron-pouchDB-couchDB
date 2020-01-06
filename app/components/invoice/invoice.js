@@ -2,9 +2,11 @@ import Component from '@glimmer/component';
 import EmberObject,  { computed, set, action, get } from '@ember/object';
 import $ from 'jquery';
 import { tracked } from "@glimmer/tracking";
+import { inject as service } from '@ember/service';
 
 export default class InvoiceInvoiceComponent extends Component {
-  store =  this.args.store;
+  @service('toast') notifications;
+  @service() store;
 
   @tracked  invoice_details = [];
   @tracked  defaultSelectProduct = null;
@@ -70,13 +72,15 @@ export default class InvoiceInvoiceComponent extends Component {
           });
           
           invoice.save();
+          this.notifications.success('Invoice Created Successfully', 'Invoice Genrated');
 
         }else {
-          alert("No product selected");
+          this.notifications.error('No product selected', 'Error');
+          
         }
         
       }else {
-        alert("Select both supplier and buyer ");
+        this.notifications.error('Select both supplier and buyer', 'Error');
       }
 
     }
