@@ -66,17 +66,22 @@ export default class InvoiceInvoiceComponent extends Component {
           let invoice_details = await invoice.detail;
 
           await details.forEach (async detail => {
-           let a = await this.store.createRecord("invoice-detail", detail);
-            await invoice_details.pushObject(a);
-            a.save();
+           let d = await this.store.createRecord("invoice-detail", detail);
+           let product =  await this.store.peekRecord('product', d.get("product.id"));;
+           product.set("stock", product.get("stock") - d.qty);
+           await invoice_details.pushObject(d);
+           d.save();
+           product.save();
+
           });
           
           invoice.save();
           this.notifications.success('Invoice Created Successfully', 'Invoice Genrated');
           this.invoice_details = [];
+
+
         }else {
           this.notifications.error('No product selected', 'Error');
-          
         }
         
       }else {

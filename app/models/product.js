@@ -8,7 +8,7 @@ export default Model.extend({
     model: DS.attr('string'),
     retail_price: DS.attr('number'),
     sale_price: DS.attr('number'),
-    stock: DS.attr('string'),
+    stock: DS.attr('number'),
     invoice_details: DS.belongsTo('invoice_detail'),
     selected: DS.attr('boolean')
 });
