@@ -4,9 +4,12 @@ import { Model } from 'ember-pouch';
 
 export default Model.extend({
 
-    inv_no  : DS.attr('string'),
+    inv_no      : DS.attr('string'),
     date        : DS.attr('string'),
     detail      : DS.hasMany('invoice_detail'),
-    createdAt   : DS.attr("timestamp")
+    buyer       : DS.belongsTo('buyer'),
+    supplier    : DS.belongsTo('supplier'),
+
+    // createdAt   : DS.attr("timestamp")
 
 });

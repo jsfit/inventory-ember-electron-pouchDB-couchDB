@@ -42,11 +42,6 @@
           <td class="align-middle">{{selectedSupplier.ntn}}</td>
 
         </tr>
-        <tr>
-          <td colspan="5" class="align-middle">Invoice:</td>
-          <td class="align-middle">{{selectedSupplier.invoice}}</td>
-
-        </tr>
       </tbody>
     </table>
   </div>
@@ -117,26 +112,28 @@
     </thead>
     <tbody>
       {{#each invoice_details as |details index|}}
-        <tr class="d-flex">
-          <td class="col-4">
-            <select class="js-example-basic-single form-control"
-              onchange={{action (mut details.product ) value="target.value"  }} id="productSelect-{{index}}" name="product">
-              {{#each @products as |p|}}
-                <option value={{p.id}} >{{p.model}}</option>
-              {{/each}}
-            </select>
-          </td>
-          <td class="col-2">
-                {{input value=details.qty type="number"  class="form-control"  required="true"}}
-          </td>
-          <td class="col-2">
-                {{input value=details.retail_price type="number"  class="form-control"  required="true"}}
-          </td>
-          <td class="col-4">{{multiply  details.qty details.retail_price}}<button {{action "removeDetail" index}} type="button" class="btn btn-danger float-right">-</button></td>
-        </tr>
+      <tr class="d-flex">
+        <td class="col-4">
+          <select class="js-example-basic-single form-control"
+            onchange={{action (mut details.product ) value="target.value"  }} id="productSelect-{{index}}"
+            name="product">
+            {{#each @products as |p|}}
+            <option value={{p.id}}>{{p.model}}</option>
+            {{/each}}
+          </select>
+        </td>
+        <td class="col-2">
+          {{input value=details.qty type="number"  class="form-control"  required="true"}}
+        </td>
+        <td class="col-2">
+          {{input value=details.retail_price type="number"  class="form-control"  required="true"}}
+        </td>
+        <td class="col-4">{{multiply  details.qty details.retail_price}}<button {{action "removeDetail" index}}
+            type="button" class="btn btn-danger float-right">-</button></td>
+      </tr>
       {{/each}}
       {{productSelect}}
-      <tr>  
+      <tr>
         <button {{action "addRemoveDetails" true}} type="button" class="btn btn-primary">+</button>
         <button {{action "addRemoveDetails" false}} type="button" class="btn btn-danger">-</button>
       </tr>
@@ -144,32 +141,37 @@
   </table>
 
   <table class="table table-borderless">
-    
+
     <tbody>
       <tr class="d-flex">
-        <td  class="col-6"></td>
-        <td  class="col-4">Total Retail Value</td>
-        <td  class="col-2">{{total-cal invoice_details "total_retail" 17}}</td>
+        <td class="col-6"></td>
+        <td class="col-4">Total Retail Value</td>
+        <td class="col-2">{{total-cal invoice_details "total_retail" 17}}</td>
       </tr>
       <tr class="d-flex">
-        <td  class="col-6"></td>
-        <td  class="col-4">Sales Tax 17%</td>
-        <td  class="col-2">{{total-cal invoice_details "salesTax" 17}}</td>
+        <td class="col-6"></td>
+        <td class="col-4">Sales Tax 17%</td>
+        <td class="col-2">{{total-cal invoice_details "salesTax" 17}}</td>
       </tr>
       <tr class="d-flex">
-        <td  class="col-6"></td>
-        <td  class="col-4">Total Value Inclusive of SalesTax</td>
-        <td  class="col-2">{{total-cal invoice_details "inclusive" 17}}</td>
+        <td class="col-6"></td>
+        <td class="col-4">Total Value Inclusive of SalesTax</td>
+        <td class="col-2">{{total-cal invoice_details "inclusive" 17}}</td>
       </tr>
       <tr class="d-flex">
-        <td  class="col-6"></td>
-        <td  class="col-4">Disscount</td>
-        <td  class="col-2">{{total-cal invoice_details "discount" 17 13}}</td>
+        <td class="col-6"></td>
+        <td class="col-4">Disscount</td>
+        <td class="col-2">{{total-cal invoice_details "discount" 17 13}}</td>
       </tr>
-      <tr class="d-flex second">
-        <td  class="col-6"></td>
-        <td  class="col-4">Net Value Inclusive of SalesTax</td>
-        <td  class="col-2">{{total-cal invoice_details "netTotal" 17 13}}</td>
+      <tr class="d-flex ">
+        <td class="col-6"></td>
+        <td class="col-4">Net Value Inclusive of SalesTax</td>
+        <td class="col-2">{{total-cal invoice_details "netTotal" 17 13}}</td>
+      </tr>
+      <tr class="d-flex second float-right">
+        <td class="col-12">
+          <button {{action "submitInvoice"}} type="button" class="btn btn-primary">Save Invoice</button>
+        </td>
       </tr>
     </tbody>
   </table>

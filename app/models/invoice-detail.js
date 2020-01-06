@@ -8,6 +8,5 @@ export default Model.extend({
     product     : DS.belongsTo('product'),
     qty         : DS.attr('number'),
     retail_price: DS.attr('number'),
-    createdAt   : DS.attr("timestamp")
 
 });

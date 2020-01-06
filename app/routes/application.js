@@ -15,7 +15,8 @@ export default class ApplicationRoute extends Route {
         // this.get('store').createRecord('todo', {title:"hello", isCompleted:true}).save();
           return hash({
             // orders: this.get('store').findAll('order'),
-            customer: this.get('store').findAll('customer'),
+            buyer: this.get('store').findAll('buyer'),
+            supplier: this.get('store').findAll('supplier'),
             products: this.get('store').findAll('product')
           });
     }
