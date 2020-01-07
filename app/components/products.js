@@ -7,65 +7,38 @@ import { tracked } from "@glimmer/tracking";
 
 export default class ProductsComponent extends Component {
     @service() store;
-    @tracked allProducts = this.args.products;
-
+    
     constructor() {
         super(...arguments);
         set(this, 'product', {});
-
-        $(document).ready( function () {
-            $('#table_id').DataTable();
-        } );
     }
 
     @computed('allProducts')
     get productSelect() {
 
-        let dataSet = this.allProducts.map(p => [p.company, p.model, p.retail_price, p.stock
+        let dataSet = this.args.products.map(p => [p.company, p.model, p.retail_price, p.stock,
+            `<button type="button" class="btn btn-danger product-delete" data-id=${p.id}>Delete</button>`
         ]);
         $("#table_id").dataTable().fnDestroy();
-        // return this.allProducts;
         $('#table_id').DataTable( {
             data: dataSet,
             columns: [
                 { title: "Company" },
                 { title: "Model" },
                 { title: "Retail Price" },
-                { title: "Stock" }
+                { title: "Stock" },
+                { title: "Actions" }
             ]
         } );
+
+        let self= this;
+        $('.product-delete').on('click', function() {
+            var id = $(this).attr('data-id');
+            self.store.peekRecord("product", id).destroyRecord();
+        });
     }
 
     @task(function* () {
-        this.store.createRecord("product", get(this, "product")).save().then((d)=>{
-            console.log(d);
-            // $('#table_id').DataTable().draw();
-            // $('#table_id').DataTable().api.row.clear().draw();
-            // $('#table_id').DataTable().row.add( {
-            //     "Company":       "Tiger Nixon",
-            //     "Model":   "System Architect",
-            //     "Retail Price":     "$3,120",
-            //     "Stock": "66",
-            // } ).draw();
-        });
-
-
+        this.store.createRecord("product", get(this, "product")).save();
     }) createProduct;
-
-    @action
-    deleteProduct(product){
-        product.destroyRecord();
-        $('#table_id').DataTable().draw();
-        // product.deleteRecord();
-        // product.isDeleted; // => true
-        // product.save(); /
-    }
-
-    @action
-    editProduct(product){
-        // product.destroyRecord();
-        // product.deleteRecord();
-        // product.isDeleted; // => true
-        // product.save(); /
-    }
 }
